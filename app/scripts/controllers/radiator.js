@@ -15,12 +15,14 @@ angular.module('bvRadiatorApp')
 		if ($routeParams.project !== undefined) {
 			$interval(function() {
 				getProjectData();
-				console.log($scope.jobs);
 			}, 5000);
 		}
 	};
 	var getProjectData = function() {
 		var url = '/view/:project/api/json?depth=1';
+		if (!$routeParams.project) {
+			return;
+		}
 		$http.get(url.replace(':project', $routeParams.project), {cache:false}).success(function(response) {
 			var jobs = {successJobs:[], failedJobs:[], disabledJobs:[], unknownJobs:[]};
 			angular.forEach(response.jobs, function(job) {

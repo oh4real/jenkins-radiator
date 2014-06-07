@@ -15,7 +15,7 @@ body {
   padding-top: 20px;
   padding-bottom: 20px;
   color: white;
-  a {
+  .bvBrandColor {
     color: #998CD1;
   }
 }
@@ -164,4 +164,20 @@ body.bvRadiator {
 
 .buildNumber {
   float:right;
+}
+.viewMenuLabel {
+  text-align: right;
+  margin-top: 5px;
+}
+
+span.viewMenu {
+  float:right;
+  font-size:larger;
+  display:block;
+  margin-top:-10px;
+}
+
+select.viewMenuSelect {
+  background-color: black;
+  color: white;
 }

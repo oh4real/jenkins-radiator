@@ -1,0 +1,16 @@
+<div class="container">
+  <form role="form">
+    <div class="form-group">
+      <label for="selectView" class="col-sm-6 control-label viewMenuLabel bvBrandColor">Select A Jenkins View</label>
+      <div class="col-sm-3">
+      	<select class="form-control viewMenuSelect" id="selectView" ng-model="selectedView" ng-options="view.name for view in views"></select>
+  	</div>
+      <div class="col-sm-2">
+        	<!-- <button type="submit" class="btn btn-default">Sign in</button> -->
+  		  <button class="btn btn-primary" ng-click="goToView()">Go To View</button>
+      </div>
+    </div>
+    <div class="form-group">
+    </div>
+  </form>
+</div>
