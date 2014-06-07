@@ -10,7 +10,6 @@
  */
 angular
   .module('bvRadiatorApp', [
-    'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngRoute',
@@ -19,8 +18,12 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
+      .when('/', {
+        templateUrl: 'partials/main.html',
+        controller: 'MainController'
+      })
       .when('/radiator/:project', {
-        templateUrl: 'views/radiator.html',
+        templateUrl: 'partials/radiator.html',
         controller: 'RadiatorController'
       })
       .otherwise({

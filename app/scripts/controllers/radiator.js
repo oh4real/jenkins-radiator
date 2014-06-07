@@ -12,12 +12,14 @@ angular.module('bvRadiatorApp')
 	$scope.project = $routeParams.project;
 	$scope.jobs = {successJobs:[], failedJobs:[], disabled:[], unknownJobs:[]};
 	var poll = function() {
-		$interval(function() {
-			getProjectData();
-		}, 5000);
+		if ($routeParams.project !== undefined) {
+			$interval(function() {
+				getProjectData();
+				console.log($scope.jobs);
+			}, 5000);
+		}
 	};
 	var getProjectData = function() {
-		// var url = 'http://jenkins.bvops.net/view/:project/api/json?depth=1';
 		var url = '/view/:project/api/json?depth=1';
 		$http.get(url.replace(':project', $routeParams.project), {cache:false}).success(function(response) {
 			var jobs = {successJobs:[], failedJobs:[], disabledJobs:[], unknownJobs:[]};

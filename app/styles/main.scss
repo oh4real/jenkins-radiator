@@ -14,6 +14,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 body {
   padding-top: 20px;
   padding-bottom: 20px;
+  color: white;
+  a {
+    color: #998CD1;
+  }
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -99,32 +103,35 @@ body.bvRadiator {
   }
 }
 
+@-webkit-keyframes pulse_animation {
+  0% { -webkit-transform: scale(1); }
+  30% { -webkit-transform: scale(1); }
+  40% { -webkit-transform: scale(1.08); }
+  50% { -webkit-transform: scale(1); }
+  60% { -webkit-transform: scale(1); }
+  70% { -webkit-transform: scale(1.05); }
+  80% { -webkit-transform: scale(1); }
+  100% { -webkit-transform: scale(1); }
+}
 .radiator-li {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
   border-color: black;
 }
+
 .blue {
   @extend .radiator-li;
-  background-color:seagreen;
+  background-color:darkgreen;
 }
 .blue_anime {
   @extend .radiator-li;
   background-color:seagreen;
-  -webkit-animation: blue-running 5s; /* Chrome, Safari, Opera */
-  animation: blue-running 5s;
-}
-/* Chrome, Safari, Opera */
-@-webkit-keyframes blue-running {
-    from {background: seagreen;}
-    to {background: olivedrab;}
-}
-
-/* Standard syntax */
-@keyframes blue-running {
-    from {background: seagreen;}
-    to {background: olivedrab;}
+  -webkit-animation-name: 'pulse_animation';
+  -webkit-animation-duration: 2000ms;
+  -webkit-transform-origin:70% 70%;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
 }
 
 .red {
@@ -134,19 +141,11 @@ body.bvRadiator {
 .red_anime {
   @extend .radiator-li;
   background-color:red;
-  -webkit-animation: red-running 5s; /* Chrome, Safari, Opera */
-  animation: red-running 5s;
-}
-/* Chrome, Safari, Opera */
-@-webkit-keyframes red-running {
-    from {background: firebrick;}
-    to {background: red;}
-}
-
-/* Standard syntax */
-@keyframes red-running {
-    from {background: firebrick;}
-    to {background: red;}
+  -webkit-animation-name: 'pulse_animation';
+  -webkit-animation-duration: 2000ms;
+  -webkit-transform-origin:70% 70%;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
 }
 
 .disabledJob {

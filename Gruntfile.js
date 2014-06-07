@@ -77,7 +77,7 @@ module.exports = function (grunt) {
         livereload: 35729
       },
       proxies: [{
-        context: '/view/',
+        context: ['/view', '/api'],
         host: 'jenkins.bvops.net',
         port: 80,
         https: false,
