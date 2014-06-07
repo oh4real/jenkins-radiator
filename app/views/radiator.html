@@ -1,0 +1,17 @@
+<div class="header">
+	<h3 class="text-muted">{{project}}</h3>
+</div>
+<div class="section">
+	<ul class="failed list-group" style="list-style:none;">
+		<li ng-repeat="job in jobs.failedJobs" class="list-group-item {{job.color}}">{{ job.name }} <span class="buildNumber">#{{ job.lastStableBuild.number }}</span></li>
+	</ul>
+	<ul class="success list-group" style="list-style:none;">
+		<li ng-repeat="job in jobs.successJobs" class="list-group-item {{job.color}} col-md-4">{{ job.name }} <span class="buildNumber">#{{ job.lastStableBuild.number }}</span></li>
+	</ul>
+	<ul class="success list-group" style="list-style:none;">
+		<li ng-repeat="job in jobs.disabledJobs" class="list-group-item {{job.color}} col-md-4">{{ job.name }} <span class="buildNumber">#{{ job.lastStableBuild.number }}</span></li>
+	</ul>
+	<ul class="success list-group" style="list-style:none;">
+		<li ng-repeat="job in jobs.unknownJobs" class="list-group-item {{job.color}} col-md-4">{{ job.name }} <span class="buildNumber">#{{ job.lastStableBuild.number }}</span></li>
+	</ul>
+</div>
