@@ -162,7 +162,7 @@ body.bvRadiator {
   background-color: black;
 }
 
-a.buildNumber, a.buildNumber:hover {
+.buildNumber, .buildNumber a, .buildNumber a:hover {
   float:right;
   color: white;
 }
