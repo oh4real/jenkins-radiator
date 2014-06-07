@@ -162,8 +162,9 @@ body.bvRadiator {
   background-color: black;
 }
 
-.buildNumber {
+a.buildNumber, a.buildNumber:hover {
   float:right;
+  color: white;
 }
 .viewMenuLabel {
   text-align: right;

@@ -4,15 +4,15 @@
 </div>
 <div class="section">
 	<ul class="failed list-group">
-		<li ng-repeat="job in jobs.failedJobs" class="list-group-item {{job.color}}">{{ job.name }} <span class="buildNumber">#{{ job.lastStableBuild.number }}</span></li>
+		<li ng-repeat="job in jobs.failedJobs" class="list-group-item {{job.color}}">{{ job.name }} <a ng-href="{{job.lastBuild.url}}" target="_blank" class="buildNumber">#{{ job.lastBuild.number }}</a></li>
 	</ul>
 	<ul class="success list-group">
-		<li ng-repeat="job in jobs.successJobs" class="list-group-item {{job.color}} col-md-4">{{ job.name }} <span class="buildNumber">#{{ job.lastStableBuild.number }}</span></li>
+		<li ng-repeat="job in jobs.successJobs" class="list-group-item {{job.color}} col-md-4">{{ job.name }} <a ng-href="{{job.lastStableBuild.url}}" target="_blank" class="buildNumber">#{{ job.lastStableBuild.number }}</a></li>
 	</ul>
 	<ul class="success list-group">
-		<li ng-repeat="job in jobs.disabledJobs" class="list-group-item {{job.color}} col-md-4">{{ job.name }} <span class="buildNumber">#{{ job.lastStableBuild.number }}</span></li>
+		<li ng-repeat="job in jobs.disabledJobs" class="list-group-item {{job.color}} col-md-4">{{ job.name }} <a ng-href="{{job.lastStableBuild.url}}" target="_blank" class="buildNumber">#{{ job.lastStableBuild.number }}</a></li>
 	</ul>
 	<ul class="success list-group">
-		<li ng-repeat="job in jobs.unknownJobs" class="list-group-item {{job.color}} col-md-4">{{ job.name }} <span class="buildNumber">#{{ job.lastStableBuild.number }}</span></li>
+		<li ng-repeat="job in jobs.unknownJobs" class="list-group-item {{job.color}} col-md-4">{{ job.name }} <a ng-href="{{job.lastStableBuild.url}}" target="_blank" class="buildNumber">#{{ job.lastStableBuild.number }}</a></li>
 	</ul>
 </div>
