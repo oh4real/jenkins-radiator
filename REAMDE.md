@@ -20,8 +20,8 @@
 	$ bower install
 
 ## Usage
-- "grunt serve" host the sight locally
-- "grunt build" use to regenerate /dist dir. Dist can be vhosted
+- "grunt serve" host the site locally
+- "grunt build" use to regenerate /dist dir. Dist can be vhosted but still need to proxy /view and /api to jenkins.
 
 ## Proxying API Requests for localhost development
 - Using Grunt Connect Proxy: https://www.npmjs.org/package/grunt-connect-proxy
