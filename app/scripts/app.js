@@ -18,9 +18,6 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        template: '<span class="viewMenu" jenkins-view-menu></span>',
-      })
       .when('/radiator/:project', {
         templateUrl: 'partials/radiator.html',
         controller: 'RadiatorController'
