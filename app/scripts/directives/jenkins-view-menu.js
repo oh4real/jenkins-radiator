@@ -17,7 +17,7 @@ angular.module('bvRadiatorApp')
 				angular.forEach(response.views, function(view) {
 					var project = view.url.match(/\/view\/(.*)\/$/);
 					if (project) {
-						view.project = project[1];
+						view.project = project[1].replace('%20', ' ');
 						$scope.views.push(view);
 					}
 				});
