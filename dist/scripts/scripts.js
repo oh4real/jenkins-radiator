@@ -1,1 +1,119 @@
-"use strict";angular.module("bvRadiatorApp",["ngCookies","ngResource","ngRoute","ngSanitize","ngTouch"]).config(["$routeProvider",function(a){a.when("/radiator/:project",{templateUrl:"partials/radiator.html",controller:"RadiatorController"}).otherwise({redirectTo:"/radiator/All"})}]),angular.module("bvRadiatorApp").controller("RadiatorController",["$scope","$routeParams","$interval","$http",function(a,b,c,d){a.project=b.project,a.jobs={successJobs:[],failedJobs:[],disabled:[],unknownJobs:[]};var e=null;a.$on("$destroy",function(){e&&c.cancel(e)});var f=function(){void 0!==b.project&&(e=c(function(){g()},5e3))},g=function(){var c="/view/:project/api/json?depth=1";b.project&&d.get(c.replace(":project",b.project),{cache:!1}).success(function(b){var c={successJobs:[],failedJobs:[],disabledJobs:[],unknownJobs:[]};angular.forEach(b.jobs,function(a){0===a.color.indexOf("blue")?c.successJobs.push(a):0===a.color.indexOf("red")?c.failedJobs.push(a):0===a.color.indexOf("disabled")?(a.color="disabledJob",c.disabledJobs.push(a)):c.unknownJobs.push(a)}),a.jobs=c})};g(),f()}]),angular.module("bvRadiatorApp").directive("jenkinsViewMenu",function(){var a={};return a.templateUrl="partials/jenkins-view-menu.html",a.controller=function(a,b,c){a.views=[],b.get("/api/json").success(function(b){angular.forEach(b.views,function(b){var c=b.url.match(/\/view\/(.*)\/$/);c&&(b.project=c[1],a.views.push(b))})}),a.goToView=function(){var b="/radiator/"+a.selectedView.project;c.path(b)}},a.scope={},a});
+'use strict';
+/**
+ * @ngdoc overview
+ * @name bvRadiatorApp
+ * @description
+ * # bvRadiatorApp
+ *
+ * Main module of the application.
+ */
+angular.module('bvRadiatorApp', [
+  'ngCookies',
+  'ngResource',
+  'ngRoute',
+  'ngSanitize',
+  'ngTouch'
+]).config([
+  '$routeProvider',
+  function ($routeProvider) {
+    $routeProvider.when('/radiator/:project', {
+      templateUrl: 'partials/radiator.html',
+      controller: 'RadiatorController'
+    }).otherwise({ redirectTo: '/radiator/All' });
+  }
+]);
+'use strict';
+/**
+ * @ngdoc function
+ * @name bvRadiatorApp.controller:AboutCtrl
+ * @description
+ * # AboutCtrl
+ * Controller of the bvRadiatorApp
+ */
+angular.module('bvRadiatorApp').controller('RadiatorController', [
+  '$scope',
+  '$routeParams',
+  '$interval',
+  '$http',
+  function ($scope, $routeParams, $interval, $http) {
+    $scope.project = $routeParams.project;
+    $scope.jobs = {
+      successJobs: [],
+      failedJobs: [],
+      disabled: [],
+      unknownJobs: []
+    };
+    var currInterval = null;
+    $scope.$on('$destroy', function () {
+      if (currInterval) {
+        $interval.cancel(currInterval);
+      }
+    });
+    var poll = function () {
+      if ($routeParams.project !== undefined) {
+        currInterval = $interval(function () {
+          getProjectData();
+        }, 5000);
+      }
+    };
+    var getProjectData = function () {
+      var url = '/view/:project/api/json?depth=1';
+      if (!$routeParams.project) {
+        return;
+      }
+      $http.get(url.replace(':project', $routeParams.project), { cache: false }).success(function (response) {
+        var jobs = {
+            successJobs: [],
+            failedJobs: [],
+            disabledJobs: [],
+            unknownJobs: []
+          };
+        angular.forEach(response.jobs, function (job) {
+          if (job.color.indexOf('blue') === 0) {
+            jobs.successJobs.push(job);
+          } else if (job.color.indexOf('red') === 0) {
+            jobs.failedJobs.push(job);
+          } else if (job.color.indexOf('disabled') === 0) {
+            job.color = 'disabledJob';
+            jobs.disabledJobs.push(job);
+          } else {
+            jobs.unknownJobs.push(job);
+          }
+        });
+        $scope.jobs = jobs;
+      });
+    };
+    getProjectData();
+    poll();
+  }
+]);
+'use strict';
+/**
+ * @ngdoc function
+ * @name bvRadiatorApp.controller:AboutCtrl
+ * @description
+ * # AboutCtrl
+ * Controller of the bvRadiatorApp
+ */
+angular.module('bvRadiatorApp').directive('jenkinsViewMenu', function () {
+  var directiveDefinitionObject = {};
+  directiveDefinitionObject.templateUrl = 'partials/jenkins-view-menu.html';
+  directiveDefinitionObject.controller = function ($scope, $http, $location) {
+    $scope.views = [];
+    $http.get('/api/json').success(function (response) {
+      angular.forEach(response.views, function (view) {
+        var project = view.url.match(/\/view\/(.*)\/$/);
+        if (project) {
+          view.project = project[1];
+          $scope.views.push(view);
+        }
+      });
+    });
+    $scope.goToView = function () {
+      var view = '/radiator/' + $scope.selectedView.project;
+      $location.path(view);
+    };
+  };
+  directiveDefinitionObject.scope = {};
+  return directiveDefinitionObject;
+});

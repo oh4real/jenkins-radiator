@@ -351,6 +351,14 @@ module.exports = function (grunt) {
 
     // Copies remaining files to places other tasks can use
     copy: {
+      temp: {
+        files: [{
+          expand: true,
+          cwd: '.tmp/concat',
+          dest: '<%= yeoman.dist %>',
+          src: ['scripts/*.js']
+        }]
+      },
       dist: {
         files: [{
           expand: true,
@@ -412,7 +420,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
-      return grunt.task.run(['build', 'connect:dist:keepalive']);
+      return grunt.task.run(['build', 'connect:dist:keepalive', 'configureProxies:server']);
     }
 
     grunt.task.run([
@@ -450,10 +458,11 @@ module.exports = function (grunt) {
     'copy:dist',
     'cdnify',
     'cssmin',
-    'uglify',
+    // 'uglify',
     // 'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'copy:temp'
   ]);
 
   grunt.registerTask('default', [
