@@ -11,9 +11,15 @@ angular.module('bvRadiatorApp')
   .controller('RadiatorController', function ($scope, $routeParams, $interval, $http) {
 	$scope.project = $routeParams.project;
 	$scope.jobs = {successJobs:[], failedJobs:[], disabled:[], unknownJobs:[]};
+	var currInterval = null;
+	$scope.$on('$destroy', function (){
+		if (currInterval) {
+			$interval.cancel(currInterval);
+		};
+	});
 	var poll = function() {
 		if ($routeParams.project !== undefined) {
-			$interval(function() {
+			currInterval = $interval(function() {
 				getProjectData();
 			}, 5000);
 		}

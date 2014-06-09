@@ -23,6 +23,6 @@ angular
         controller: 'RadiatorController'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/radiator/All'
       });
   });
