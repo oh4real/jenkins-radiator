@@ -13,14 +13,12 @@ angular
     'ngRoute'
   ])
   .config(function ($routeProvider) {
-    console.log('inside config');
     $routeProvider
       .when('/radiator/:project', {
         templateUrl: 'partials/radiator.html',
         controller: 'RadiatorController'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/radiator/All'
       });
-    console.log('leaving config');
   });
