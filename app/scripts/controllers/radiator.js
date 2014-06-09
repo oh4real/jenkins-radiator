@@ -15,7 +15,7 @@ angular.module('bvRadiatorApp')
 	$scope.$on('$destroy', function (){
 		if (currInterval) {
 			$interval.cancel(currInterval);
-		};
+		}
 	});
 	var poll = function() {
 		if ($routeParams.project !== undefined) {
