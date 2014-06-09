@@ -11,7 +11,7 @@ angular.module('bvRadiatorApp')
 	.directive('jenkinsViewMenu', function() {
 		var directiveDefinitionObject = {};
 		directiveDefinitionObject.templateUrl = 'partials/jenkins-view-menu.html';
-		directiveDefinitionObject.controller = function($scope, $http, $location) {
+		directiveDefinitionObject.controller = ['$scope', '$http', '$location', function($scope, $http, $location) {
 			$scope.views = [];
 			$http.get('/api/json').success(function(response) {
 				angular.forEach(response.views, function(view) {
@@ -27,7 +27,7 @@ angular.module('bvRadiatorApp')
 				var view = '/radiator/' + $scope.selectedView.project;
 				$location.path(view);
 			};
-		};
+		}];
 		directiveDefinitionObject.scope = {};
 		return directiveDefinitionObject;
 	});

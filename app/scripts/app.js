@@ -10,19 +10,17 @@
  */
 angular
   .module('bvRadiatorApp', [
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch'
+    'ngRoute'
   ])
   .config(function ($routeProvider) {
+    console.log('inside config');
     $routeProvider
       .when('/radiator/:project', {
         templateUrl: 'partials/radiator.html',
         controller: 'RadiatorController'
       })
       .otherwise({
-        redirectTo: '/radiator/All'
+        redirectTo: '/'
       });
+    console.log('leaving config');
   });
