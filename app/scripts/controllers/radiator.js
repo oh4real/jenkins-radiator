@@ -11,6 +11,7 @@ angular.module('bvRadiatorApp')
   .controller('RadiatorController', function ($scope, $routeParams, $interval, $http) {
 	$scope.project = $routeParams.project;
 	$scope.jobs = {successJobs:[], failedJobs:[], disabled:[], unknownJobs:[]};
+	$scope.width = 4;
 	var currInterval = null;
 	$scope.$on('$destroy', function (){
 		if (currInterval) {
@@ -18,7 +19,7 @@ angular.module('bvRadiatorApp')
 		}
 	});
 	var poll = function() {
-		if ($routeParams.project !== undefined) {
+		if (angular.isDefined($routeParams.project)) {
 			currInterval = $interval(function() {
 				getProjectData();
 			}, 5000);
