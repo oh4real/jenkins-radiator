@@ -137,9 +137,14 @@ body.bvRadiator {
 .red {
   @extend .radiator-li;
   background-color:firebrick;
+  font-size: 64px;
+   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .red_anime {
   @extend .radiator-li;
+  @extend .red;
   background-color:red;
   -webkit-animation-name: 'pulse_animation';
   -webkit-animation-duration: 2000ms;
