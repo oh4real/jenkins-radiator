@@ -10,7 +10,7 @@
 angular.module('bvRadiatorApp')
   .controller('RadiatorController', function ($scope, $routeParams, $interval, $http) {
 	$scope.project = $routeParams.project;
-	$scope.jobs = {successJobs:[], failedJobs:[], disabled:[], unknownJobs:[]};
+	$scope.jobs = {stableJobs:[], failedJobs:[], disabled:[], unknownJobs:[]};
 	var currInterval = null;
 	$scope.$on('$destroy', function (){
 		if (currInterval) {
@@ -25,15 +25,16 @@ angular.module('bvRadiatorApp')
 		}
 	};
 	var getProjectData = function() {
-		var url = '/view/:project/api/json?depth=1';
+		var url = '/view/:project/api/json?depth=2';
 		if (!$routeParams.project) {
 			return;
 		}
 		$http.get(url.replace(':project', $routeParams.project), {cache:false}).success(function(response) {
-			var jobs = {successJobs:[], failedJobs:[], disabledJobs:[], unknownJobs:[]};
+			console.log(response);
+			var jobs = {stableJobs:[], failedJobs:[], disabledJobs:[], unknownJobs:[]};
 			angular.forEach(response.jobs, function(job) {
-				if (job.color.indexOf('blue') === 0) {
-					jobs.successJobs.push(job);
+				if (job.color.indexOf('blue') === 0 || job.color.indexOf('yellow') === 0) {
+					jobs.stableJobs.push(job);
 				} else if (job.color.indexOf('red') === 0) {
 					jobs.failedJobs.push(job);
 				} else if (job.color.indexOf('disabled') === 0) {

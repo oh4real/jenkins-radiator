@@ -5,8 +5,8 @@
 	<ul class="failed list-group row radiatorGroup" ng-show="jobs.failedJobs.length">
 		<li ng-repeat="job in jobs.failedJobs" class="list-group-item {{job.color}} col-lg-12">{{ job.name }} <a ng-href="{{job.lastBuild.url}}" target="_blank" class="buildNumber">#{{ job.lastBuild.number }}</a></li>
 	</ul>
-	<ul class="success list-group row radiatorGroup" ng-show="jobs.successJobs.length">
-		<li ng-repeat="job in jobs.successJobs" class="list-group-item {{job.color}} col-lg-4">{{ job.name }} <a ng-href="{{job.lastStableBuild.url}}" target="_blank" class="buildNumber">#{{ job.lastStableBuild.number }}</a></li>
+	<ul class="success list-group row radiatorGroup" ng-show="jobs.stableJobs.length">
+		<li ng-repeat="job in jobs.stableJobs" class="list-group-item {{job.color}} col-lg-4">{{ job.name }} <a ng-href="{{job.lastStableBuild.url}}" target="_blank" class="buildNumber">#{{ job.lastStableBuild.number }}</a></li>
 	</ul>
 	<ul class="success list-group row radiatorGroup" ng-show="jobs.disabledJobs.length">
 		<li ng-repeat="job in jobs.disabledJobs" class="list-group-item {{job.color}} col-lg-4">{{ job.name }} <a ng-href="{{job.lastStableBuild.url}}" target="_blank" class="buildNumber">#{{ job.lastStableBuild.number }}</a></li>

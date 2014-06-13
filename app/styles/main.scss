@@ -126,7 +126,6 @@ body.bvRadiator {
   background-color:darkgreen;
 }
 .blue_anime {
-  @extend .radiator-li;
   background-color:seagreen;
   -webkit-animation-name: 'pulse_animation';
   -webkit-animation-duration: 2000ms;
@@ -144,9 +143,21 @@ body.bvRadiator {
   white-space: nowrap;
 }
 .red_anime {
-  @extend .radiator-li;
   @extend .red;
   background-color:red;
+  -webkit-animation-name: 'pulse_animation';
+  -webkit-animation-duration: 2000ms;
+  -webkit-transform-origin:70% 70%;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+.yellow {
+  @extend .radiator-li;
+  background-color:darkseagreen;
+}
+.yellow_anime {
+  @extend .yellow;
+  background-color:yellowgreen;
   -webkit-animation-name: 'pulse_animation';
   -webkit-animation-duration: 2000ms;
   -webkit-transform-origin:70% 70%;
@@ -159,9 +170,27 @@ body.bvRadiator {
   background-color: dimgray;
 }
 
+.disabledJob_anime {
+  @extend .disabledJob;
+  background-color:lightgrey;
+  -webkit-animation-name: 'pulse_animation';
+  -webkit-animation-duration: 2000ms;
+  -webkit-transform-origin:70% 70%;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+
 .notbuilt {
   @extend .radiator-li;
   background-color: black;
+}
+.notbuilt_anime {
+  @extend .notbuilt;
+  -webkit-animation-name: 'pulse_animation';
+  -webkit-animation-duration: 2000ms;
+  -webkit-transform-origin:70% 70%;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
 }
 .aborted {
   @extend .radiator-li;
