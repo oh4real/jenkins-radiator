@@ -126,6 +126,7 @@ body.bvRadiator {
   background-color:darkgreen;
 }
 .blue_anime {
+  @extend .blue;
   background-color:seagreen;
   -webkit-animation-name: 'pulse_animation';
   -webkit-animation-duration: 2000ms;
