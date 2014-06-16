@@ -41,7 +41,7 @@ angular.module('bvRadiatorApp')
 		$http.get(url.replace(':project', $routeParams.project), {cache:false}).success(function(response) {
 			var jobs = {stableJobs:[], failedJobs:[], disabledJobs:[], unknownJobs:[]};
 			angular.forEach(response.jobs, function(job) {
-				if (job.color.indexOf('blue') === 0 || job.color.indexOf('yellow') === 0) {
+				if (job.color.indexOf('blue') === 0 || job.color.indexOf('yellow') === 0 || job.color.indexOf('aborted') === 0) {
 					jobs.stableJobs.push(job);
 				} else if (job.color.indexOf('red') === 0) {
 					jobs.failedJobs.push(job);

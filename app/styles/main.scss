@@ -154,11 +154,11 @@ body.bvRadiator {
 }
 .yellow {
   @extend .radiator-li;
-  background-color:darkseagreen;
+  background-color:darkgoldenrod;
 }
 .yellow_anime {
   @extend .yellow;
-  background-color:yellowgreen;
+  background-color:goldenrod;
   -webkit-animation-name: 'pulse_animation';
   -webkit-animation-duration: 2000ms;
   -webkit-transform-origin:70% 70%;
@@ -195,12 +195,12 @@ body.bvRadiator {
 }
 .aborted {
   @extend .radiator-li;
-  background-color: black;
+  background-color: darkseagreen;
 }
 
 .aborted_anime {
   @extend .aborted;
-  background-color: darkgrey;
+  background-color: yellowgreen;
   -webkit-animation-name: 'pulse_animation';
   -webkit-animation-duration: 2000ms;
   -webkit-transform-origin:70% 70%;
