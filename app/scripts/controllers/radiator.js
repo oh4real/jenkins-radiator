@@ -8,7 +8,7 @@
  * Controller of the bvRadiatorApp
  */
 angular.module('bvRadiatorApp')
-  .controller('RadiatorController', function ($scope, $routeParams, $interval, $http, $route, $timeout) {
+  .controller('RadiatorController', function ($scope, $routeParams, $interval, $http) {
 	$scope.project = $routeParams.project;
 	$scope.jobs = {stableJobs:[], abortedJobs: [], failedJobs:[], disabled:[], unknownJobs:[]};
 	var currInterval = null;
@@ -65,13 +65,6 @@ angular.module('bvRadiatorApp')
 		});
 	};
 
-	var refreshPage = function() {
-		$timeout(function() {
-			$route.reload();
-		}, 28800*1000);
-	};
-
 	getProjectData();
 	poll();
-	refreshPage();
 });
