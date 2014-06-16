@@ -195,12 +195,12 @@ body.bvRadiator {
 }
 .aborted {
   @extend .radiator-li;
-  background-color: darkseagreen;
+  background-color: darkgrey;
 }
 
 .aborted_anime {
   @extend .aborted;
-  background-color: yellowgreen;
+  background-color: lightgrey;
   -webkit-animation-name: 'pulse_animation';
   -webkit-animation-duration: 2000ms;
   -webkit-transform-origin:70% 70%;
