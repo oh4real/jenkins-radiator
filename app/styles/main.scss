@@ -198,6 +198,16 @@ body.bvRadiator {
   background-color: black;
 }
 
+.aborted_anime {
+  @extend .aborted;
+  background-color: darkgrey;
+  -webkit-animation-name: 'pulse_animation';
+  -webkit-animation-duration: 2000ms;
+  -webkit-transform-origin:70% 70%;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+
 a.buildNumber, a.buildNumber:hover {
   float:right;
   color: white;
