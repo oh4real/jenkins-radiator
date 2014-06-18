@@ -113,6 +113,15 @@ body.bvRadiator {
   80% { -webkit-transform: scale(1); }
   100% { -webkit-transform: scale(1); }
 }
+
+.anime {
+  -webkit-animation-name: 'pulse_animation';
+  -webkit-animation-duration: 2000ms;
+  -webkit-transform-origin:70% 70%;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+
 .radiator-li {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -128,11 +137,7 @@ body.bvRadiator {
 .blue_anime {
   @extend .blue;
   background-color:seagreen;
-  -webkit-animation-name: 'pulse_animation';
-  -webkit-animation-duration: 2000ms;
-  -webkit-transform-origin:70% 70%;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
+  @extend .anime;
 }
 
 .red {
@@ -146,11 +151,7 @@ body.bvRadiator {
 .red_anime {
   @extend .red;
   background-color:red;
-  -webkit-animation-name: 'pulse_animation';
-  -webkit-animation-duration: 2000ms;
-  -webkit-transform-origin:70% 70%;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
+  @extend .anime;
 }
 .yellow {
   @extend .radiator-li;
@@ -159,11 +160,7 @@ body.bvRadiator {
 .yellow_anime {
   @extend .yellow;
   background-color:goldenrod;
-  -webkit-animation-name: 'pulse_animation';
-  -webkit-animation-duration: 2000ms;
-  -webkit-transform-origin:70% 70%;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
+  @extend .anime;
 }
 
 .disabledJob {
@@ -174,11 +171,6 @@ body.bvRadiator {
 .disabledJob_anime {
   @extend .disabledJob;
   background-color:lightgrey;
-  -webkit-animation-name: 'pulse_animation';
-  -webkit-animation-duration: 2000ms;
-  -webkit-transform-origin:70% 70%;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
 }
 
 .notbuilt {
@@ -187,11 +179,7 @@ body.bvRadiator {
 }
 .notbuilt_anime {
   @extend .notbuilt;
-  -webkit-animation-name: 'pulse_animation';
-  -webkit-animation-duration: 2000ms;
-  -webkit-transform-origin:70% 70%;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
+  @extend .anime;
 }
 .aborted {
   @extend .radiator-li;
@@ -201,11 +189,7 @@ body.bvRadiator {
 .aborted_anime {
   @extend .aborted;
   background-color: lightgrey;
-  -webkit-animation-name: 'pulse_animation';
-  -webkit-animation-duration: 2000ms;
-  -webkit-transform-origin:70% 70%;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
+  @extend .anime;
 }
 
 a.buildNumber, a.buildNumber:hover {
