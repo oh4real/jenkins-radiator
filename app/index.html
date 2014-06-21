@@ -13,6 +13,12 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+<!-- kiosk --><script id="grunt-kiosk-interval" type="text/javascript">
+!function(){window.setInterval(function(){var e=document.getElementById("grunt-kiosk")
+e&&document.getElementsByTagName("body")[0].removeChild(e)
+var t=document.createElement("script")
+t.id="grunt-kiosk",t.src="grunt-kiosk-version.js",t.type="text/javascript",document.getElementsByTagName("body")[0].appendChild(t)},3600000)}()
+</script><!-- endkiosk -->
   </head>
   <body ng-app="bvRadiatorApp" class="bvRadiator">
     <!--[if lt IE 7]>

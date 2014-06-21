@@ -31,7 +31,11 @@ module.exports = function (grunt) {
       app: require('./bower.json').appPath || 'app',
       dist: 'dist'
     },
-
+    kiosk: {
+      dest: ['dist', 'app'],
+      interval: 3600 * 1000,
+      rev: 'bv-ver'
+    },
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       bower: {
@@ -453,7 +457,8 @@ module.exports = function (grunt) {
     'uglify',
     // 'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'kiosk'
   ]);
 
   grunt.registerTask('default', [
@@ -461,4 +466,37 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+  grunt.registerTask('kiosk', function(version, interval) {
+    // default interval will be hourly
+    var kioskConfig = grunt.config.get('kiosk'),
+        dest = (kioskConfig && kioskConfig.dest) || ['dist', 'app'],
+        interval = interval || (kioskConfig && kioskConfig.interval) || 3600 * 1000,
+        rev = [version || (kioskConfig && kioskConfig.version) || '0', Date.now()].join('.'),
+        kioskRegex = /(([ \t]*)<!--\s*kiosk*(\S*)\s*-->)(\n|\r|.)*?(<!--\s*endkiosk\s*-->)/gi,
+        contents = [
+          '"use strict"',
+          'var loadedVersion = "###",',
+          'currentVersion = currentVersion || loadedVersion',
+          'currentVersion !== loadedVersion && (function(){console.log("new version detected: reloading page");return true;})() && window.location.reload()'
+        ].join('\n'),
+        kiosk = [
+          '<!-- kiosk --><script id="grunt-kiosk-interval" type="text/javascript">',
+          '!function(){window.setInterval(function(){var e=document.getElementById("grunt-kiosk")',
+          'e&&document.getElementsByTagName("body")[0].removeChild(e)',
+          'var t=document.createElement("script")',
+          't.id="grunt-kiosk",t.src="grunt-kiosk-version.js",t.type="text/javascript",document.getElementsByTagName("body")[0].appendChild(t)},###)}()',
+          '</script><!-- endkiosk -->'
+        ].join('\n').replace('###', interval);
+
+    dest.forEach(function(file) {
+        grunt.file.write(file + '/grunt-kiosk-version.js', contents.replace('###', rev));
+        var str = grunt.file.read(file + '/index.html');
+        if (str.match(kioskRegex)) {
+          grunt.file.write(file + '/index.html', str.replace(kioskRegex, kiosk));
+        }
+    });
+    grunt.log.write('The rev used is: ' + rev + '\n');
+    grunt.log.write('The interval used is: ' + interval + '\n');
+  });
 };

@@ -21,9 +21,4 @@ angular
       .otherwise({
         redirectTo: '/radiator/All'
       });
-  })
-  .run(function($timeout, $window) {
-    $timeout(function() {
-      $window.location.reload();
-    }, 28800 * 1000);
   });
