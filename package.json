@@ -34,7 +34,7 @@
         "grunt-karma": "~0.8.3",
         "grunt-connect-proxy": "~0.1.10",
         "grunt-contrib-livereload": "~0.1.2",
-        "grunt-kiosk": ">=0.1.0"
+        "grunt-kiosk": "~0.1.x"
     },
     "engines": {
         "node": ">=0.10.0"
