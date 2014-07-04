@@ -27,7 +27,7 @@
 - Using Grunt Connect Proxy: https://www.npmjs.org/package/grunt-connect-proxy
 - Followed the basic setup in that readme. I'm not too sure about what all the middleware stuff is doing, but instructions were fairly copy/pastable. 
 - Required including lrSnippet and mountFolder calls at top. I don't know what they do, per se, but they are included.
-- Routes to be proxied to jenkins: ['/view', '/api'] to jenkins.bvops.net
+- Routes to be proxied to jenkins: ['/view', '/api'] to JENKINS_HOST
 
 ## For Vhosting
 - add following (or similar) to your vhost:
@@ -38,7 +38,7 @@
 		...
 	    <Directory />    
 	        RewriteEngine On
-	        RewriteRule /(view|api)/(.*) http://jenkins.bvops.net/$1/$2 [P]
+	        RewriteRule /(view|api)/(.*) http://JENKINS_HOST/$1/$2 [P]
 	        ...
 	    </Directory>
 	</VirtualHost>
