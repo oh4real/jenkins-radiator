@@ -34,7 +34,7 @@
 	<VirtualHost *:80>
 		...
 	    DocumentRoot "/SERVER/PATH/TO/jenkins-radiator/dist"
-	    ServerName bv-radiator
+	    ServerName radiator
 		...
 	    <Directory />    
 	        RewriteEngine On

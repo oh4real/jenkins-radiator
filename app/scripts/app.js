@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name bvRadiatorApp
+ * @name jenkinsRadiatorApp
  * @description
- * # bvRadiatorApp
+ * # jenkinsRadiatorApp
  *
  * Main module of the application.
  */
 angular
-    .module('bvRadiatorApp', [
+    .module('jenkinsRadiatorApp', [
         'ngRoute'
     ])
     .config(function($routeProvider) {
