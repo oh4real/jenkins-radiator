@@ -89,8 +89,8 @@ module.exports = function(grunt) {
             },
             proxies: [{
                 context: ['/view', '/api'],
-                host: 'jenkins.bvops.net',
-                port: 80,
+                host: '10.0.0.13',
+                port: 9090,
                 https: false,
                 changeOrigin: true,
                 xforward: false,

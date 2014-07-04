@@ -9,16 +9,16 @@
  * Main module of the application.
  */
 angular
-  .module('bvRadiatorApp', [
-    'ngRoute'
-  ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/radiator/:project', {
-        templateUrl: 'partials/radiator.html',
-        controller: 'RadiatorController'
-      })
-      .otherwise({
-        redirectTo: '/radiator/All'
-      });
-  });
+    .module('bvRadiatorApp', [
+        'ngRoute'
+    ])
+    .config(function($routeProvider) {
+        $routeProvider
+            .when('/radiator/:project', {
+                templateUrl: 'partials/radiator.html',
+                controller: 'RadiatorController'
+            })
+            .otherwise({
+                redirectTo: '/'
+            });
+    });
